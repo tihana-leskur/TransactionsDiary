@@ -16,6 +16,7 @@ final class HomeCoordinator: BaseFlowCoordinator {
         )
         let view = HomeView(viewModel: viewModel, coordinator: self)
         let viewController = UIHostingController(rootView: view)
+        viewController.navigationItem.setHidesBackButton(true, animated: false)
         return viewController
     }
 
@@ -29,7 +30,7 @@ final class HomeCoordinator: BaseFlowCoordinator {
             diResolver: diResolver
         )
         let viewController = coordinator.createTransactionsListViewController()
-        navigationController.navigationItem.setHidesBackButton(true, animated: true)
+        viewController.navigationItem.setHidesBackButton(true, animated: false)
         navigationController.navigationBar.isHidden = false
         navigationController.pushViewController(viewController, animated: true)
     }

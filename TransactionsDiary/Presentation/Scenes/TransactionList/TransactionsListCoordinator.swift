@@ -21,14 +21,14 @@ final class TransactionsListCoordinator: BaseFlowCoordinator {
         let viewController = UIHostingController(rootView: view)
         return viewController
     }
-    
+
     func showTransactionDetails(id: UUID) {
         let coordinator = TransactionPreviewCoordinator(
             navigationController: navigationController,
             diResolver: diResolver
         )
         let viewController = coordinator.createViewController(transactionId: id)
-        navigationController.navigationItem.setHidesBackButton(true, animated: true)
+        viewController.navigationItem.setHidesBackButton(true, animated: false)
         navigationController.navigationBar.isHidden = false
         navigationController.pushViewController(viewController, animated: true)
     }

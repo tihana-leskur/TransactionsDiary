@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: set in coordinator before presenting vc
 struct NavigationBarViewModifier: ViewModifier {
     let title: String
     let style: NavigationBarStyle

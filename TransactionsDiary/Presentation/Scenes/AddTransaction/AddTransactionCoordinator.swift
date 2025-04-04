@@ -27,6 +27,7 @@ final class AddTransactionCoordinator: BaseFlowCoordinator, ImageCaptureFlow {
             [viewController],
             animated: false
         )
+        viewController.navigationItem.setHidesBackButton(true, animated: false)
         navigationController.present(flowNavigationStack, animated: true)
     }
     
@@ -52,7 +53,8 @@ final class AddTransactionCoordinator: BaseFlowCoordinator, ImageCaptureFlow {
         
         navBar.isHidden = false
         navigationController.modalPresentationStyle = .pageSheet
-        navigationController.navigationItem.setHidesBackButton(true, animated: true)
+        navigationController.navigationItem.setHidesBackButton(true, animated: false)
+        navigationController.navigationBar.isHidden = false
         return navigationController
     }
 
@@ -65,6 +67,7 @@ final class AddTransactionCoordinator: BaseFlowCoordinator, ImageCaptureFlow {
         )
         let view = AddTransactionView(viewModel: viewModel)
         let viewController = UIHostingController(rootView: view)
+        viewController.navigationItem.setHidesBackButton(true, animated: false)
         flowNavigationStack?.pushViewController(viewController, animated: true)
     }
 

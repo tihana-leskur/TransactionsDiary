@@ -8,6 +8,11 @@
 import Combine
 import Foundation
 
+enum HttpClientType {
+    case urlSession
+    // alamofire
+}
+
 protocol HttpClient {
     func execute(request: URLRequest) -> Future<Data, Error>
 }

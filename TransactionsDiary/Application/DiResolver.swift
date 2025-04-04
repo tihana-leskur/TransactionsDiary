@@ -17,22 +17,28 @@ protocol DiResolver {
 }
 
 final class DefaultDiResolver: DiResolver {
-    private let httpClient: HttpClient
+    private let remoteDataSource: RemoteDataSource
     private let databaseRepositoryFactory: DatabaseRepositoryFactory
     private let _authRepository: AuthRepository
     private let _networkReachabilityRepository: NetworkReachabilityRepository
     private let _transactionRepository: TransactionRepository
 
-    init(databaseType: DatabaseType) async throws {
+    init(
+        databaseType: DatabaseType,
+        httpClientType: HttpClientType
+    ) async throws {
         switch databaseType {
         case .coreData:
             databaseRepositoryFactory =  try await CoreDataRepositoryFactory()
         }
-        self.httpClient = UrlSessionHttpClient()
+        switch httpClientType {
+        case .urlSession:
+            remoteDataSource = DefaultRemoteDataSource(httpClient: UrlSessionHttpClient())
+        }
         self._networkReachabilityRepository = DefaultNetworkReachabilityRepository()
         self._authRepository = DefaultAuthRepository(
             secureDataSource: KeychainDataSource(),
-            remoteDataSource: DefaultRemoteDataSource(httpClient: httpClient)
+            remoteDataSource: remoteDataSource
         )
         self._transactionRepository = databaseRepositoryFactory.createTransactionRepository()
     }
@@ -43,9 +49,7 @@ final class DefaultDiResolver: DiResolver {
             launchStateRepository: DefaultLaunchStateRepository(
                 cacheDataSource: UserDefaults.standard
             ),
-            remoteDataSource: DefaultRemoteDataSource(
-                httpClient: httpClient
-            ),
+            remoteDataSource: remoteDataSource,
             transactionRepository: databaseRepositoryFactory.createTransactionRepository()
         )
     }
@@ -53,9 +57,7 @@ final class DefaultDiResolver: DiResolver {
     func transactionService() -> TransactionService {
         DefaultTransactionService(
             transactionRepository: _transactionRepository,
-            remoteDataSource: DefaultRemoteDataSource(
-                httpClient: httpClient
-            ),
+            remoteDataSource: remoteDataSource,
             authRepository: _authRepository,
             networkReachabilityRepository: _networkReachabilityRepository
         )

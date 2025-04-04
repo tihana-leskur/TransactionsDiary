@@ -17,11 +17,6 @@ final class TransactionsListViewModel: ObservableObject {
     private let batchSize: Int
     private let loadingThreshold: Int
     private var loadBatchRequestsSubject: PassthroughSubject<Int, Never> = .init()
-    // demo usecase: see transaction details from the list
-    // data source can't be updated on next screens;
-    // no need to reload data when going back to this screen;
-    private var isInitialScreenAppearance = true
-    private var shouldReloadDataOnAppear: PassthroughSubject<Bool, Never> = .init()
     private var cancellables: Set<AnyCancellable> = .init()
     
     init(
@@ -36,16 +31,11 @@ final class TransactionsListViewModel: ObservableObject {
     }
 
     func viewWillAppear() {
-        guard isInitialScreenAppearance else {
-            shouldReloadDataOnAppear.send(false)
-            return
-        }
-        isInitialScreenAppearance.toggle()
-        shouldReloadDataOnAppear.send(true)
         loadBatchRequestsSubject.send(0)
     }
 
     func transactionAppearedAt(index: Int) {
+        print("tihana transactionAppearedAt index: \(index), count: \(transactionsList.count)")
         loadBatchRequestsSubject.send(index)
     }
 }
@@ -54,24 +44,23 @@ final class TransactionsListViewModel: ObservableObject {
 private extension TransactionsListViewModel {
     func subscribeToLoadBatchRequests() {
         loadBatchRequestsSubject
-            .combineLatest(shouldReloadDataOnAppear)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
-            .sink { [weak self] (index, shouldTriggerRequest) in
-                guard let self = self,
-                      shouldTriggerRequest else {
+            .sink { [weak self] index in
+                guard let self = self else {
                     return
                 }
-                let isInitialBatch = index == 0
-                let fromIndex = isInitialBatch ? 0 : (index / batchSize + 1) * batchSize
+                let shouldLoadInitialBatch = index == 0 && transactionsList.isEmpty
+                let nextBatchIndex = (index / batchSize + 1) * batchSize
                 // index satisfies threshold and batch is not already loaded (user scrolling up)
                 let shouldLoadNextBatch = index % batchSize == loadingThreshold
-                && fromIndex >= transactionsList.count
+                && nextBatchIndex >= transactionsList.count
                 guard !self.isLoading,
-                      isInitialBatch || shouldLoadNextBatch else {
+                      shouldLoadInitialBatch || shouldLoadNextBatch else {
                     return
                 }
                 isLoading = true
+                let fromIndex = index == 0 ? 0 : nextBatchIndex
                 loadNextBatch(from: fromIndex)
             }
             .store(in: &cancellables)
@@ -85,7 +74,7 @@ private extension TransactionsListViewModel {
         .receive(on: DispatchQueue.main)
         .sink { [weak self] result in
             if case .failure = result {
-                print("ERROr TransactionListViewModel - could not load transactions data")
+                print("ERROR TransactionListViewModel - could not load transactions data")
                 if index == 0 {
                     self?.createEmptyPageState()
                 } else {

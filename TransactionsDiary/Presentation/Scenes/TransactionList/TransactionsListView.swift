@@ -37,7 +37,7 @@ struct TransactionsListView: View {
         _ items: [ComponentItem]
     ) -> some View {
         ScrollView {
-            VStack {
+            LazyVStack {
                 ForEach(Array(items.enumerated()), id: \.offset) { index, element in
                     OnlyTextComponentView(
                         item: .init(

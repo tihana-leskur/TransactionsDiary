@@ -14,7 +14,7 @@ struct HomeView: View {
 
     var body: some View {
         ScrollView {
-            Spacer().frame(height: 10)
+            Spacer().frame(height: 60)
             VStack(alignment: .leading) {
                 title()
                 Spacer().frame(height: 10)
@@ -28,9 +28,10 @@ struct HomeView: View {
                 Spacer()
             }
         }
-        .addBackgroundView()
+        .addBackgroundView(hasNavigationBar: false)
         .onWillAppear {
             viewModel.viewWillAppear()
+            coordinator.syncNavigationBarVisibility()
         }
     }
     

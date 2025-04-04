@@ -28,7 +28,7 @@ extension XCTestCase {
 
     func awaitPublisher<T: Publisher>(
         _ publisher: T,
-        timeout: TimeInterval = 15,
+        timeout: TimeInterval = 5,
         file: StaticString = #file,
         line: UInt = #line,
         executionAction: (() -> Void)? = nil

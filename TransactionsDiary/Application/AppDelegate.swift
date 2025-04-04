@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Task {
             do {
-                let diResolver = try await DefaultDiResolver(databaseType: .coreData)
+                let diResolver = try await DefaultDiResolver(
+                    databaseType: .coreData,
+                    httpClientType: .urlSession
+                )
                 appFlowCoordinator = AppFlowCoordinator(diResolver: diResolver)
             } catch {
                 print("ERROR App Launch - Dependencies could not be resolved!")

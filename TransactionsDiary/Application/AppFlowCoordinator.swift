@@ -72,9 +72,9 @@ final class AppFlowCoordinator {
         navBar.scrollEdgeAppearance = appearance
         navBar.compactAppearance = appearance
         navBar.tintColor = .black
+        navBar.isHidden = true
         
-        navBar.isHidden = false
-        
+        navigationController.navigationItem.setHidesBackButton(true, animated: false)
         return navigationController
     }
 }

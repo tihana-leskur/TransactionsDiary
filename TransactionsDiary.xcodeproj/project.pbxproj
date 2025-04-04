@@ -14,7 +14,6 @@
 		B75909272D9AB4C7005ECB55 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75909242D9AB4C7005ECB55 /* AppFlowCoordinator.swift */; };
 		B75909282D9AB4C7005ECB55 /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75909252D9AB4C7005ECB55 /* BaseFlowCoordinator.swift */; };
 		B75909292D9AB4C7005ECB55 /* DiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75909262D9AB4C7005ECB55 /* DiResolver.swift */; };
-		B75909402D9AB623005ECB55 /* DomainEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759093D2D9AB623005ECB55 /* DomainEntity.swift */; };
 		B759094B2D9AB7D2005ECB55 /* TransactionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759094A2D9AB7D2005ECB55 /* TransactionEntity.swift */; };
 		B759094E2D9AB7E8005ECB55 /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759094C2D9AB7E8005ECB55 /* CoreDataSource.swift */; };
 		B75909522D9AB805005ECB55 /* SecureDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75909502D9AB805005ECB55 /* SecureDataSource.swift */; };
@@ -112,7 +111,6 @@
 		B75909242D9AB4C7005ECB55 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		B75909252D9AB4C7005ECB55 /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
 		B75909262D9AB4C7005ECB55 /* DiResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiResolver.swift; sourceTree = "<group>"; };
-		B759093D2D9AB623005ECB55 /* DomainEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEntity.swift; sourceTree = "<group>"; };
 		B759094A2D9AB7D2005ECB55 /* TransactionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionEntity.swift; sourceTree = "<group>"; };
 		B759094C2D9AB7E8005ECB55 /* CoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
 		B75909502D9AB805005ECB55 /* SecureDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureDataSource.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 			children = (
 				B759095D2D9AB84F005ECB55 /* Entities */,
 				B759095E2D9AB855005ECB55 /* Services */,
-				B759093D2D9AB623005ECB55 /* DomainEntity.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -770,7 +767,6 @@
 				B7EFE4E72D9C92A10031921E /* ImageCaptureView.swift in Sources */,
 				B7752BC02D9C29A60069EC3D /* ImageEntity.swift in Sources */,
 				B759097E2D9ABC21005ECB55 /* Styles.swift in Sources */,
-				B75909402D9AB623005ECB55 /* DomainEntity.swift in Sources */,
 				B75909532D9AB805005ECB55 /* CacheDataSource.swift in Sources */,
 				B75909742D9AB8B4005ECB55 /* Theme.swift in Sources */,
 				B75909772D9AB8B4005ECB55 /* HomeViewModel.swift in Sources */,

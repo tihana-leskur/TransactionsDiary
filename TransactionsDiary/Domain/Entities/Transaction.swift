@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Transaction: DomainEntity {
+struct Transaction {
     let id: UUID
     let name: String
     let timestamp: Double

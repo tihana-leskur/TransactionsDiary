@@ -35,7 +35,6 @@ final class TransactionsListViewModel: ObservableObject {
     }
 
     func transactionAppearedAt(index: Int) {
-        print("tihana transactionAppearedAt index: \(index), count: \(transactionsList.count)")
         loadBatchRequestsSubject.send(index)
     }
 }

@@ -30,7 +30,6 @@ struct TransactionPreviewView: View {
         .addBackgroundView()
         .modifier(
             NavigationBarViewModifier(
-                title: "Transaction Details",
                 style: DefaultTheme().navigationBarStyle(),
                 onTap: { coordinator.goBack() }
             ))

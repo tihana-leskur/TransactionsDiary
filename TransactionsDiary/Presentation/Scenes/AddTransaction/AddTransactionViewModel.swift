@@ -24,11 +24,10 @@ final class AddTransactionViewModel: ObservableObject {
     }
     @Published var selectedCurrency: Currency = .dkk
     @Published var actionButtonState = ButtonItem(
-        content: "Save",
+        content: Strings.saveAction,
         isEnabled: false
     )
     let image: UIImage
-    let title: String
     
     private enum InputType: CaseIterable {
         case date
@@ -46,7 +45,6 @@ final class AddTransactionViewModel: ObservableObject {
         self.coordinator = coordinator
         self.type = type
         self.image = image
-        self.title = "Add Transaction Details"
     }
 
     func onBackButtonTapped() {

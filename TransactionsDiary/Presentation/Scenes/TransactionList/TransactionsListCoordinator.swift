@@ -19,6 +19,7 @@ final class TransactionsListCoordinator: BaseFlowCoordinator {
             coordinator: self
         )
         let viewController = UIHostingController(rootView: view)
+        viewController.title = Strings.allTransactionsTitle
         return viewController
     }
 
@@ -29,6 +30,7 @@ final class TransactionsListCoordinator: BaseFlowCoordinator {
         )
         let viewController = coordinator.createViewController(transactionId: id)
         viewController.navigationItem.setHidesBackButton(true, animated: false)
+        viewController.title = Strings.transactionDetailsTitle
         navigationController.navigationBar.isHidden = false
         navigationController.pushViewController(viewController, animated: true)
     }

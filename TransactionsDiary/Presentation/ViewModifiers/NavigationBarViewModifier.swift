@@ -9,16 +9,13 @@ import SwiftUI
 
 // TODO: set in coordinator before presenting vc
 struct NavigationBarViewModifier: ViewModifier {
-    let title: String
     let style: NavigationBarStyle
     let onTap: () -> Void
     
     init(
-        title: String,
         style: NavigationBarStyle,
         onTap: @escaping () -> Void
     ) {
-        self.title = title
         self.style = style
         self.onTap = onTap
     }
@@ -27,16 +24,6 @@ struct NavigationBarViewModifier: ViewModifier {
         content
             .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text(title)
-                            .modifier(
-                                TextViewModifier(
-                                    style: style.titleStyle
-                                )
-                            )
-                    }
-                }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         onTap()

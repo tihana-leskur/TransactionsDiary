@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  TransactionsDiary
+
+  Created by tihana leskur on 4/6/25.
+  
+*/
+
+// MARK: - General
+"saveAction" = "Save";
+"confirmAction" = "Confirm";
+"continueAction" = "Continue";
+
+// MARK: - Home
+"hello" = "Hello";
+"lastTransactions" = "Last Transactions";
+"addReceipt" = "Add Receipt";
+"addInvoice" = "Add Invoice";
+"seeAllTransactions" = "See All Transactions";
+
+// MARK: - Transactions List
+"allTransactionsTitle" = "All transactions";
+
+// MARK: - Add Transaction
+"takeTransactionImageTitle" = "Add transaction image";
+"addTransactionDetailsTitle" = "Add Transaction Details";
+"enterAmount" = "Enter amount";
+
+// MARK: - Image Capture
+"takePhoto" = "Take Photo";
+"retakePhoto" = "Retake Photo";
+
+// MARK: - Transaction Details
+"transactionDetailsTitle" = "Transaction Details";

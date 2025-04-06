@@ -6,13 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 // Data models on UI Layer
 class ButtonItem {
-    let content: String
+    var content: String
     var isEnabled: Bool
-    
-    init(content: String, isEnabled: Bool = false) {
+
+    init(
+        content: String,
+        isEnabled: Bool
+    ) {
         self.content = content
         self.isEnabled = isEnabled
     }

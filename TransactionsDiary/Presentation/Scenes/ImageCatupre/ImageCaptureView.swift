@@ -37,10 +37,9 @@ struct ImageCaptureView: View {
         .interactiveDismissDisabled(true)
         .modifier(
             NavigationBarViewModifier(
-                title: viewModel.title,
                 style: DefaultTheme().modalNavigationBarStyle(),
-                onTap: { coordinator.dismiss() }
-            ))
+                onTap: { coordinator.dismiss() })
+        )
     }
     @ViewBuilder
     private func cameraActionButton() -> some View {
@@ -50,8 +49,7 @@ struct ImageCaptureView: View {
                 textStyle: viewModel.cameraButtonState.isEnabled ?
                 DefaultTheme().enabledButtonTextStyle() : DefaultTheme().disabledButtonTextStyle(),
                 contentViewStyle: viewModel.cameraButtonState.isEnabled ?
-                DefaultTheme().enabledButtonBackgroundStyle() : DefaultTheme().disabledButtonBackgroundStyle(),
-                onTap: {}
+                DefaultTheme().enabledButtonBackgroundStyle() : DefaultTheme().disabledButtonBackgroundStyle()
             ),
             height: 50,
             width: nil,
@@ -72,8 +70,7 @@ struct ImageCaptureView: View {
                 textStyle: viewModel.confirmButtonState.isEnabled ?
                 DefaultTheme().enabledButtonTextStyle() : DefaultTheme().disabledButtonTextStyle(),
                 contentViewStyle: viewModel.confirmButtonState.isEnabled ?
-                DefaultTheme().enabledButtonBackgroundStyle() : DefaultTheme().disabledButtonBackgroundStyle(),
-                onTap: {}
+                DefaultTheme().enabledButtonBackgroundStyle() : DefaultTheme().disabledButtonBackgroundStyle()
             ),
             height: 50,
             width: nil,

@@ -90,8 +90,7 @@ private extension TransactionsListViewModel {
         transactionsList = transactionsList + newBatch.map {
             ComponentItem(
                 id: $0.id,
-                content: $0.type.rawValue + " - " + formatDate(seconds: $0.timestamp),
-                onTap: {}
+                content: $0.type.rawValue + " - " + formatDate(seconds: $0.timestamp)
             )
         }
         isLoading = false

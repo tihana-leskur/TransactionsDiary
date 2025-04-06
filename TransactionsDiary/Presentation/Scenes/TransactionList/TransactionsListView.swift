@@ -21,7 +21,6 @@ struct TransactionsListView: View {
         .addBackgroundView()
         .modifier(
             NavigationBarViewModifier(
-                title: viewModel.title,
                 style: DefaultTheme().navigationBarStyle(),
                 onTap: { coordinator.goBack() }
             ))
@@ -46,8 +45,7 @@ struct TransactionsListView: View {
                             textStyle: DefaultTheme()
                                 .secondaryTextStyle(),
                             contentViewStyle: DefaultTheme()
-                                .secondaryBackgroundStyle(),
-                            onTap: element.onTap
+                                .secondaryBackgroundStyle()
                         ),
                         height: 50,
                         width: nil,

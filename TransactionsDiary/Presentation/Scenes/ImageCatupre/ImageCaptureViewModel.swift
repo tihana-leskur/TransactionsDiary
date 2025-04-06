@@ -10,27 +10,19 @@ import UIKit
 
 final class ImageCaptureViewModel: ObservableObject {
     let imagePickerSettings: ImagePickerSettings
-    // TODO: tihana localize me
-    let title = "Take Transaction Image"
 
     @Published var image: UIImage = UIImage() {
         didSet {
-            confirmButtonState = ButtonItem(
-                content: "Confirm",
-                isEnabled: true
-            )
-            cameraButtonState = ButtonItem(
-                content: "Retake Photo",
-                isEnabled: true
-            )
+            confirmButtonState.isEnabled = true
+            cameraButtonState.content = Strings.retakePhoto
         }
     }
     @Published var cameraButtonState = ButtonItem(
-        content: "Take Photo",
+        content: Strings.takePhoto,
         isEnabled: true
     )
     @Published var confirmButtonState = ButtonItem(
-        content: "Confirm",
+        content: Strings.confirmAction,
         isEnabled: true
     )
 

@@ -7,14 +7,13 @@
 
 import Foundation
 
+// General item; TODO: tihana rename, clarify
 struct ComponentItem: Identifiable {
     let id: UUID
     let content: String
-    let onTap: () -> Void
 
     static let empty = ComponentItem(
         id: UUID(),
-        content: "",
-        onTap: {}
+        content: ""
     )
 }

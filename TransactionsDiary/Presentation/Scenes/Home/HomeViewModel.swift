@@ -48,28 +48,23 @@ private extension HomeViewModel {
         HomeItem(
             title:  ComponentItem(
                 id: UUID(),
-                content: "Hello John",
-                onTap: {}
+                content: Strings.hello
             ),
             currentMonthHeader:  ComponentItem(
                 id: UUID(),
-                content: "Current Month",
-                onTap: {}
+                content: Strings.lastTransactions
             ),
             addInvoice: ComponentItem(
                 id: UUID(),
-                content: "Add Invoice",
-                onTap: {}
+                content: Strings.addInvoice
             ),
             addReceipt: ComponentItem(
                 id: UUID(),
-                content: "Add receipt",
-                onTap: {}
+                content: Strings.addReceipt
             ),
             seeAllTransactions: ComponentItem(
                 id: UUID(),
-                content: "See All Transactions",
-                onTap: {}
+                content: Strings.seeAllTransactions
             )
         )
     }
@@ -85,8 +80,7 @@ private extension HomeViewModel {
                 self?.currentMonthTransactions = transactions.map {
                     ComponentItem(
                         id: $0.id,
-                        content: $0.type.rawValue + " " + String($0.amount),
-                        onTap: {}
+                        content: $0.type.rawValue + " " + String($0.amount)
                     )
                 }
             }

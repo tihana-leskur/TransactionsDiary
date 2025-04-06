@@ -23,11 +23,13 @@ final class AddTransactionCoordinator: BaseFlowCoordinator, ImageCaptureFlow {
         let viewController = createImageCaptureViewController(
             settings: .cameraWithoutEditing
         )
+        viewController.title = Strings.takeTransactionImageTitle
+        viewController.navigationItem.setHidesBackButton(true, animated: false)
         flowNavigationStack.setViewControllers(
             [viewController],
             animated: false
         )
-        viewController.navigationItem.setHidesBackButton(true, animated: false)
+
         navigationController.present(flowNavigationStack, animated: true)
     }
     
@@ -67,6 +69,7 @@ final class AddTransactionCoordinator: BaseFlowCoordinator, ImageCaptureFlow {
         )
         let view = AddTransactionView(viewModel: viewModel)
         let viewController = UIHostingController(rootView: view)
+        viewController.title = Strings.addTransactionDetailsTitle
         viewController.navigationItem.setHidesBackButton(true, animated: false)
         flowNavigationStack?.pushViewController(viewController, animated: true)
     }

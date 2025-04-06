@@ -42,12 +42,6 @@ struct AddTransactionView: View {
             Spacer().frame(height: 30)
         }
         .addBackgroundView()
-        .modifier(
-            NavigationBarViewModifier(
-                title: viewModel.title,
-                style: DefaultTheme().modalNavigationBarStyle(),
-                onTap: { viewModel.onBackButtonTapped() }
-            ))
     }
 
     @ViewBuilder
@@ -109,8 +103,7 @@ struct AddTransactionView: View {
                 textStyle: viewModel.actionButtonState.isEnabled ?
                 DefaultTheme().enabledButtonTextStyle() : DefaultTheme().disabledButtonTextStyle(),
                 contentViewStyle: viewModel.actionButtonState.isEnabled ?
-                DefaultTheme().enabledButtonBackgroundStyle() : DefaultTheme().disabledButtonBackgroundStyle(),
-                onTap: {}
+                DefaultTheme().enabledButtonBackgroundStyle() : DefaultTheme().disabledButtonBackgroundStyle()
             ),
             height: 100,
             width: nil,

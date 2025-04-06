@@ -48,7 +48,7 @@ struct OnlyTextComponentView: View {
                 textStyle: DefaultTheme()
                     .titleTextStyle(),
                 contentViewStyle: nil
-            ) { },
+            ),
             height: 70,
             width: nil,
             textAlignement: .leading,
@@ -62,7 +62,7 @@ struct OnlyTextComponentView: View {
                 textStyle: DefaultTheme()
                     .headerTextStyle(),
                 contentViewStyle: nil
-            ) { },
+            ),
             height: 60,
             width: nil,
             textAlignement: .leading,
@@ -77,7 +77,7 @@ struct OnlyTextComponentView: View {
                     .primaryTextStyle(),
                 contentViewStyle: DefaultTheme()
                     .secondaryBackgroundStyle()
-            ) { },
+            ),
             height: 120,
             width: 150,
             textAlignement: .leading,
@@ -92,7 +92,7 @@ struct OnlyTextComponentView: View {
                     .secondaryTextStyle(),
                 contentViewStyle: DefaultTheme()
                     .secondaryBackgroundStyle()
-            ) { },
+            ),
             height: 50,
             width: nil,
             textAlignement: .center,
@@ -107,7 +107,7 @@ struct OnlyTextComponentView: View {
                     .enabledButtonTextStyle(),
                 contentViewStyle: DefaultTheme()
                     .enabledButtonBackgroundStyle()
-            ) { },
+            ),
             height: 50,
             width: nil,
             textAlignement: .center,
@@ -122,7 +122,7 @@ struct OnlyTextComponentView: View {
                     .disabledButtonTextStyle(),
                 contentViewStyle: DefaultTheme()
                     .disabledButtonBackgroundStyle()
-            ) { },
+            ),
             height: 50,
             width: nil,
             textAlignement: .center,

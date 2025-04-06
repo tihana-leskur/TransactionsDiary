@@ -41,8 +41,7 @@ struct HomeView: View {
             item: .init(
                 id: viewModel.state.title.id,
                 content: viewModel.state.title.content,
-                textStyle: DefaultTheme().titleTextStyle(),
-                onTap: viewModel.state.title.onTap
+                textStyle: DefaultTheme().titleTextStyle()
             ),
             height: 75,
             width: nil,
@@ -58,8 +57,7 @@ struct HomeView: View {
             item: .init(
                 id: viewModel.state.currentMonthHeader.id,
                 content: viewModel.state.currentMonthHeader.content,
-                textStyle: DefaultTheme().headerTextStyle(),
-                onTap: {}
+                textStyle: DefaultTheme().headerTextStyle()
             ),
             height: 40,
             width: nil,
@@ -86,8 +84,7 @@ struct HomeView: View {
                         textStyle: DefaultTheme()
                             .primaryTextStyle(),
                         contentViewStyle: DefaultTheme()
-                            .secondaryBackgroundStyle(),
-                        onTap: {}
+                            .secondaryBackgroundStyle()
                     ),
                     height: 80,
                     width: nil,
@@ -121,8 +118,7 @@ struct HomeView: View {
                 textStyle: DefaultTheme()
                     .enabledButtonTextStyle(), // if state can be changed it would be another Published in VM
                 contentViewStyle: DefaultTheme()
-                    .enabledButtonBackgroundStyle(),
-                onTap: {}
+                    .enabledButtonBackgroundStyle()
             ),
             height: 50,
             width: nil,
@@ -145,8 +141,7 @@ struct HomeView: View {
                 textStyle: DefaultTheme()
                     .enabledButtonTextStyle(),
                 contentViewStyle: DefaultTheme()
-                    .enabledButtonBackgroundStyle(),
-                onTap: {}
+                    .enabledButtonBackgroundStyle()
             ),
             height: 50,
             width: nil,
@@ -169,8 +164,7 @@ struct HomeView: View {
                 textStyle: DefaultTheme()
                     .enabledButtonTextStyle(), // if state can be changed it would be another Published in VM
                 contentViewStyle: DefaultTheme()
-                    .enabledButtonBackgroundStyle(),
-                onTap: {}
+                    .enabledButtonBackgroundStyle()
             ),
             height: 50,
             width: nil,

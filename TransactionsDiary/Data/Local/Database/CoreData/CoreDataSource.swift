@@ -9,9 +9,15 @@ import Combine
 import CoreData
 import Foundation
 
+extension NSManagedObjectContext: DatabaseDataSourceContext {}
+
 final class CoreDataSource: DatabaseDataSource {
     private let managedObjectContext: NSManagedObjectContext
     private var cancellables: Set<AnyCancellable> = .init()
+
+    var context: DatabaseDataSourceContext {
+        managedObjectContext
+    }
 
     init(managedObjectContext: NSManagedObjectContext) {
         self.managedObjectContext = managedObjectContext

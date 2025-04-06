@@ -41,6 +41,7 @@ extension XCTestCase {
                 switch completion {
                 case .failure(let error):
                     result = .failure(error)
+                    expectation.fulfill()
                 case .finished:
                     break
                 }

@@ -82,7 +82,7 @@ struct AddTransactionView: View {
 
     @ViewBuilder
     private func datePicker() -> some View {
-        DatePicker(selection: $viewModel.date, in: ...Date.now, displayedComponents: .date) {
+        DatePicker(selection: $viewModel.date, in: ...Date.now, displayedComponents: [.date, .hourAndMinute]) {
             Text("Select a date")
                 .modifier(
                     TextViewModifier(style: DefaultTheme().primaryTextStyle())

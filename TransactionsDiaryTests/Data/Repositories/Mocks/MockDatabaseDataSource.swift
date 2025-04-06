@@ -8,7 +8,13 @@
 import Combine
 @testable import TransactionsDiary
 
+struct MockDatabaseDataSourceContext: DatabaseDataSourceContext {}
+
 final class MockDatabaseDataSource: DatabaseDataSource {
+    var context: DatabaseDataSourceContext {
+        MockDatabaseDataSourceContext()
+    }
+
     var createMultipleResult: Result<Void, DatabaseError> = .failure(.deallocated)
     var createResult: Result<Void, DatabaseError> = .failure(.deallocated)
     var getResult: Result<[any DomainModel], DatabaseError> = .failure(.deallocated)

@@ -18,7 +18,7 @@ protocol DiResolver {
 
 final class DefaultDiResolver: DiResolver {
     private let remoteDataSource: RemoteDataSource
-    private let databaseRepositoryFactory: DatabaseRepositoryFactory
+    private let databaseDataSourceFactory: DatabaseDataSourceFactory
     private let _authRepository: AuthRepository
     private let _networkReachabilityRepository: NetworkReachabilityRepository
     private let _transactionRepository: TransactionRepository
@@ -29,7 +29,7 @@ final class DefaultDiResolver: DiResolver {
     ) async throws {
         switch databaseType {
         case .coreData:
-            databaseRepositoryFactory =  try await CoreDataRepositoryFactory()
+            databaseDataSourceFactory = try await CoreDataDataSourceFactory(inMemory: false)
         }
         switch httpClientType {
         case .urlSession:
@@ -40,7 +40,9 @@ final class DefaultDiResolver: DiResolver {
             secureDataSource: KeychainDataSource(),
             remoteDataSource: remoteDataSource
         )
-        self._transactionRepository = databaseRepositoryFactory.createTransactionRepository()
+        self._transactionRepository = DefaultTransactionRepository(
+            databaseSource: databaseDataSourceFactory.userInteractiveDataSource()
+        )
     }
 
     func launchStateService() -> LaunchStateService {
@@ -50,7 +52,9 @@ final class DefaultDiResolver: DiResolver {
                 cacheDataSource: UserDefaults.standard
             ),
             remoteDataSource: remoteDataSource,
-            transactionRepository: databaseRepositoryFactory.createTransactionRepository()
+            transactionRepository: DefaultTransactionRepository(
+                databaseSource: databaseDataSourceFactory.backgroundDataSource()
+            )
         )
     }
 

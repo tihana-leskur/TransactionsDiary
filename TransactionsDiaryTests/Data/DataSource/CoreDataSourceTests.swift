@@ -10,8 +10,63 @@ import CoreData
 import XCTest
 @testable import TransactionsDiary
 
-final class CoreDataSourceTests: XCTestCase {
+final class CoreDataSourceTests: CoreDataTest {
     var persistentContainer: NSPersistentContainer?
+
+    override func setUp() {
+        continueAfterFailure = false
+    }
+
+    func testCreate() throws {
+        // Arrange
+        let transactionId = UUID()
+        let imageId = UUID()
+        let transaction = createTransaction(id: transactionId)
+        let image = createImage(id: imageId)
+        let transactionFetchRequest: NSFetchRequest<TransactionEntity> = TransactionEntity.fetchRequest()
+        transactionFetchRequest.predicate = NSPredicate(format: "id == %@", transactionId.uuidString)
+        let imageFetchRequest: NSFetchRequest<ImageEntity> = ImageEntity.fetchRequest()
+        imageFetchRequest.predicate = NSPredicate(format: "transaction.id = %@", transactionId.uuidString)
+        
+        // Act
+        guard let sut = getDataSourceOrFail(),
+               let context = sut.context as? NSManagedObjectContext
+        else {
+            XCTFail("ERROR CoreDataSourceTests - invalid context in data source")
+            return
+        }
+        let createPublisher: Future<Void, Error> = sut.create(
+            parent: TransactionEntity.self,
+            child: ImageEntity.self,
+            parentModel: transaction,
+            childModel: image,
+            relationName: .image
+        )
+
+        do {
+            let _ = try awaitPublisher(createPublisher.eraseToAnyPublisher())
+        } catch {
+            XCTFail("CoreDataSourceTests - CREATE should have succeeded. Error: \(error)")
+        }
+
+        // Assert
+        do {
+            try context.performAndWait {
+                guard let transactionStoredObject = try context.fetch(transactionFetchRequest).first,
+                      let imageStoredObject = try context.fetch(imageFetchRequest).first else {
+                    throw DatabaseError.fetchFailed
+                }
+                let storedTransactionModel = transactionStoredObject.toDomainModel()
+                XCTAssertEqual(storedTransactionModel, transaction)
+                let storedImageModel = imageStoredObject.toDomainModel()
+                XCTAssertEqual(storedImageModel, image)
+            }
+        } catch {
+            XCTFail("CoreDataSourceTests - CREATE should have succeeded. Error: \(error)")
+        }
+    }
+    
+    // MARK: - Utils
 
     private func loadStore() -> Future<Void, Error> {
         Future<Void, Error> { [weak self] promise in
@@ -34,64 +89,18 @@ final class CoreDataSourceTests: XCTestCase {
         }
     }
 
-    func testCreate() throws {
-        // Arrange
-        let transactionId1 = UUID()
-        let userId1 = UUID()
-        let imageId1 = UUID()
-        let transaction1: TransactionModel = TransactionModel(
-            id: transactionId1,
-            userId: userId1,
-            name: "test1",
-            timestamp: 10,
-            amount: 555,
-            currency: Currency.eur.rawValue,
-            type: TransactionType.invoice.rawValue
-        )
-        let image1: ImageModel = ImageModel(
-            id: imageId1,
-            data: Data()
-        )
-        var dataSource: CoreDataSource?
+    private func getDataSourceOrFail() -> CoreDataSource? {
         do {
             let _ = try awaitPublisher(loadStore().eraseToAnyPublisher())
-            let context = persistentContainer!.newBackgroundContext()
-            dataSource = CoreDataSource(managedObjectContext: context)
+            guard let context = persistentContainer?.newBackgroundContext() else {
+                XCTFail("CoreDataSourceTests - Store failed to load")
+                return nil
+            }
             print("CoreDataSourceTests - Store successfully loaded. Data source succesfully created.")
+            return CoreDataSource(managedObjectContext: context)
         } catch {
             XCTFail("CoreDataSourceTests - Store failed to load \(error)")
-            return
-        }
-        guard let dataSource = dataSource else {
-            print("ERROR CoreDataSourceTests - trying to execute Act without store being loaded")
-            return
-        }
-        let createPublisher: Future<Void, Error> = dataSource.create(
-            parent: TransactionEntity.self,
-            child: ImageEntity.self,
-            parentModel: transaction1,
-            childModel: image1,
-            relationName: .image
-        )
-        let fetchPublisher: Future<[TransactionModel], Error> = dataSource.get(
-            TransactionEntity.self,
-            query: DatabaseQueryParemeters(
-                predicate:  NSPredicate(format: "id = %@", transactionId1.uuidString)
-            )
-        )
-
-        // Act and Assert
-        do {
-            let _ = try awaitPublisher(createPublisher.eraseToAnyPublisher())
-            let storedObject = try awaitPublisher(fetchPublisher.eraseToAnyPublisher())
-            guard let storedObject = storedObject.first else {
-                XCTFail("CoreDataSourceTests - CREATE no stored objects")
-                return
-            }
-            XCTAssertEqual(storedObject, transaction1)
-        } catch {
-            XCTFail("CoreDataSourceTests - CREATE should have succeeded")
+            return nil
         }
     }
-
 }

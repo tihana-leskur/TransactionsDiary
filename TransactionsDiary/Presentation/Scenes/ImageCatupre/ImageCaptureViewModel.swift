@@ -31,7 +31,7 @@ final class ImageCaptureViewModel: ObservableObject {
     )
     @Published var confirmButtonState = ButtonItem(
         content: "Confirm",
-        isEnabled: false
+        isEnabled: true
     )
 
     init(settings: ImagePickerSettings) {

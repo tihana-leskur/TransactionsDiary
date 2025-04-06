@@ -41,8 +41,12 @@ enum RelationName: String {
     case image
 }
 
+// MARK: - DatabaseDataSourceContext
+protocol DatabaseDataSourceContext {}
+
 // MARK: - DatabaseDataSource
 protocol DatabaseDataSource {
+    var context: DatabaseDataSourceContext { get }
     func createMultiple<Parent: DomainModelMappable, Child: DomainModelMappable>(
         parent: Parent.Type,
         child: Child.Type,

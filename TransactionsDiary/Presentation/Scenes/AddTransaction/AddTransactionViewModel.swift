@@ -13,27 +13,16 @@ final class AddTransactionViewModel: ObservableObject {
     private let transactionService: TransactionService
     private let coordinator: AddTransactionCoordinator
     private let type: TransactionType
-    private let userInputSubject: PassthroughSubject<InputType, Never> = .init()
     private var cancellables: Set<AnyCancellable> = .init()
-    private var validatedInputTypes: Set<InputType> = .init()
-    
+
     @Published var isLoading = false
-    // TODO: tihana doesn't have to be editted; fix me
-    @Published var date: Date = Date() {
-        didSet {
-            userInputSubject.send(.date)
-        }
-    }
+    @Published var date: Date = Date()
     @Published var amount: Double = 0 {
         didSet {
-            userInputSubject.send(.amount)
+            updateConfirmButtonState()
         }
     }
-    @Published var selectedCurrency: Currency = .dkk {
-        didSet {
-            userInputSubject.send(.currency)
-        }
-    }
+    @Published var selectedCurrency: Currency = .dkk
     @Published var actionButtonState = ButtonItem(
         content: "Save",
         isEnabled: false
@@ -58,7 +47,6 @@ final class AddTransactionViewModel: ObservableObject {
         self.type = type
         self.image = image
         self.title = "Add Transaction Details"
-        subscribeToUserInput()
     }
 
     func onBackButtonTapped() {
@@ -93,21 +81,7 @@ final class AddTransactionViewModel: ObservableObject {
 
 // MARK: - State Validation
 private extension AddTransactionViewModel {
-    func subscribeToUserInput() {
-        userInputSubject
-            .eraseToAnyPublisher()
-            .sink { [weak self] inputType in
-                guard let self = self else {
-                   return
-                }
-                self.validatedInputTypes.insert(inputType)
-                if self.validatedInputTypes.count == InputType.allCases.count {
-                    actionButtonState = ButtonItem(
-                        content: "Save",
-                        isEnabled: true
-                    )
-                }
-            }
-            .store(in: &cancellables)
+    func updateConfirmButtonState() {
+        actionButtonState.isEnabled = amount != 0
     }
 }

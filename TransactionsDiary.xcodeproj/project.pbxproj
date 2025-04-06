@@ -71,8 +71,11 @@
 		B7B049D82D9A392100FAE2A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B049D62D9A392100FAE2A4 /* LaunchScreen.storyboard */; };
 		B7B049ED2D9A392200FAE2A4 /* TransactionsDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B049EC2D9A392200FAE2A4 /* TransactionsDiaryUITests.swift */; };
 		B7B049EF2D9A392200FAE2A4 /* TransactionsDiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B049EE2D9A392200FAE2A4 /* TransactionsDiaryUITestsLaunchTests.swift */; };
-		B7EFE4CF2D9C3CCF0031921E /* DatabaseRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFE4CE2D9C3CCF0031921E /* DatabaseRepositoryFactory.swift */; };
-		B7EFE4D22D9C3ED80031921E /* CoreDataRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFE4D12D9C3ED80031921E /* CoreDataRepositoryFactory.swift */; };
+		B7C51BB12DA2ABBF0052E751 /* DatabaseDataSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C51BB02DA2ABBF0052E751 /* DatabaseDataSourceFactory.swift */; };
+		B7C51BB32DA2AC660052E751 /* CoreDataDataSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C51BB22DA2AC660052E751 /* CoreDataDataSourceFactory.swift */; };
+		B7C51BB52DA2BC180052E751 /* CoreDataDataSourceFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C51BB42DA2BC180052E751 /* CoreDataDataSourceFactoryTests.swift */; };
+		B7C51BBA2DA2D17B0052E751 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C51BB92DA2D17B0052E751 /* CoreDataTest.swift */; };
+		B7C51BBD2DA2E0E00052E751 /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C51BBC2DA2E0E00052E751 /* ButtonItem.swift */; };
 		B7EFE4D92D9C59EE0031921E /* DomainModelMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFE4D82D9C59EE0031921E /* DomainModelMappable.swift */; };
 		B7EFE4DB2D9C77740031921E /* TransactionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFE4DA2D9C77740031921E /* TransactionDetails.swift */; };
 		B7EFE4DE2D9C91250031921E /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFE4DD2D9C91250031921E /* AddTransactionView.swift */; };
@@ -171,8 +174,11 @@
 		B7B049E82D9A392200FAE2A4 /* TransactionsDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransactionsDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B049EC2D9A392200FAE2A4 /* TransactionsDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDiaryUITests.swift; sourceTree = "<group>"; };
 		B7B049EE2D9A392200FAE2A4 /* TransactionsDiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B7EFE4CE2D9C3CCF0031921E /* DatabaseRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepositoryFactory.swift; sourceTree = "<group>"; };
-		B7EFE4D12D9C3ED80031921E /* CoreDataRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepositoryFactory.swift; sourceTree = "<group>"; };
+		B7C51BB02DA2ABBF0052E751 /* DatabaseDataSourceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDataSourceFactory.swift; sourceTree = "<group>"; };
+		B7C51BB22DA2AC660052E751 /* CoreDataDataSourceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDataSourceFactory.swift; sourceTree = "<group>"; };
+		B7C51BB42DA2BC180052E751 /* CoreDataDataSourceFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDataSourceFactoryTests.swift; sourceTree = "<group>"; };
+		B7C51BB92DA2D17B0052E751 /* CoreDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
+		B7C51BBC2DA2E0E00052E751 /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		B7EFE4D82D9C59EE0031921E /* DomainModelMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainModelMappable.swift; sourceTree = "<group>"; };
 		B7EFE4DA2D9C77740031921E /* TransactionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetails.swift; sourceTree = "<group>"; };
 		B7EFE4DD2D9C91250031921E /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				B759097C2D9ABC01005ECB55 /* Theme+Styles */,
 				B759097F2D9ABC36005ECB55 /* ViewModifiers */,
 				B759096B2D9AB88B005ECB55 /* Components */,
+				B7C51BBB2DA2E0CF0052E751 /* Items */,
 				B75909802D9ABC50005ECB55 /* Scenes */,
 			);
 			path = Presentation;
@@ -298,8 +305,8 @@
 			children = (
 				B75909482D9AB7BB005ECB55 /* CoreData */,
 				B759097A2D9AB951005ECB55 /* DatabaseDataSource.swift */,
-				B7EFE4CE2D9C3CCF0031921E /* DatabaseRepositoryFactory.swift */,
 				B7EFE4D82D9C59EE0031921E /* DomainModelMappable.swift */,
+				B7C51BB02DA2ABBF0052E751 /* DatabaseDataSourceFactory.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -309,7 +316,7 @@
 			children = (
 				B75909492D9AB7C5005ECB55 /* Entities */,
 				B759094C2D9AB7E8005ECB55 /* CoreDataSource.swift */,
-				B7EFE4D12D9C3ED80031921E /* CoreDataRepositoryFactory.swift */,
+				B7C51BB22DA2AC660052E751 /* CoreDataDataSourceFactory.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -356,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				B75909832D9ABCA9005ECB55 /* OnlyTextComponent */,
-				B75909882D9B01A2005ECB55 /* ComponentItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -456,6 +462,8 @@
 			isa = PBXGroup;
 			children = (
 				B7331DCC2D9EC0D7002220E5 /* CoreDataSourceTests.swift */,
+				B7C51BB42DA2BC180052E751 /* CoreDataDataSourceFactoryTests.swift */,
+				B7C51BB92DA2D17B0052E751 /* CoreDataTest.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -568,6 +576,15 @@
 				B7B049EE2D9A392200FAE2A4 /* TransactionsDiaryUITestsLaunchTests.swift */,
 			);
 			path = TransactionsDiaryUITests;
+			sourceTree = "<group>";
+		};
+		B7C51BBB2DA2E0CF0052E751 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				B7C51BBC2DA2E0E00052E751 /* ButtonItem.swift */,
+				B75909882D9B01A2005ECB55 /* ComponentItem.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		B7EFE4D42D9C42D40031921E /* Cache */ = {
@@ -770,6 +787,7 @@
 				B75909532D9AB805005ECB55 /* CacheDataSource.swift in Sources */,
 				B75909742D9AB8B4005ECB55 /* Theme.swift in Sources */,
 				B75909772D9AB8B4005ECB55 /* HomeViewModel.swift in Sources */,
+				B7C51BB32DA2AC660052E751 /* CoreDataDataSourceFactory.swift in Sources */,
 				B75909792D9AB8B4005ECB55 /* HomeView.swift in Sources */,
 				B7F4ABBA2D9E154400F61E6A /* KeyboardAdaptive.swift in Sources */,
 				B748A0712D9E2E05004FEB3B /* TransactionPreviewView.swift in Sources */,
@@ -792,11 +810,12 @@
 				B75909622D9AB86A005ECB55 /* TransactionType.swift in Sources */,
 				B75909852D9AC84B005ECB55 /* SwiftUI+Extensions.swift in Sources */,
 				B759094E2D9AB7E8005ECB55 /* CoreDataSource.swift in Sources */,
+				B7C51BBD2DA2E0E00052E751 /* ButtonItem.swift in Sources */,
 				B7F003012D9D97E0009BFC3B /* ImagePickerSettings.swift in Sources */,
 				B75909762D9AB8B4005ECB55 /* HomeCoordinator.swift in Sources */,
 				B759095C2D9AB83B005ECB55 /* TransactionService.swift in Sources */,
 				B79FEF1B2D9CE50A004B0B8C /* AuthRepository.swift in Sources */,
-				B7EFE4CF2D9C3CCF0031921E /* DatabaseRepositoryFactory.swift in Sources */,
+				B7C51BB12DA2ABBF0052E751 /* DatabaseDataSourceFactory.swift in Sources */,
 				B748A06F2D9E2DD1004FEB3B /* TransactionPreviewViewModel.swift in Sources */,
 				B7EFE4E02D9C91390031921E /* AddTransactionViewModel.swift in Sources */,
 				B759094B2D9AB7D2005ECB55 /* TransactionEntity.swift in Sources */,
@@ -804,7 +823,6 @@
 				B75909292D9AB4C7005ECB55 /* DiResolver.swift in Sources */,
 				B75909282D9AB4C7005ECB55 /* BaseFlowCoordinator.swift in Sources */,
 				B77B08A32D9EDB840090D54C /* Date+Extensions.swift in Sources */,
-				B7EFE4D22D9C3ED80031921E /* CoreDataRepositoryFactory.swift in Sources */,
 				B75909872D9AC999005ECB55 /* NetworkReachabilityRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,8 +831,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C51BBA2DA2D17B0052E751 /* CoreDataTest.swift in Sources */,
 				B77B08B02D9EF98D0090D54C /* MockTransactionRepository.swift in Sources */,
 				B77B08A52D9EE3380090D54C /* TransactionRepositoryTests.swift in Sources */,
+				B7C51BB52DA2BC180052E751 /* CoreDataDataSourceFactoryTests.swift in Sources */,
 				B77B08BF2D9F14750090D54C /* TransactionListViewModelTests.swift in Sources */,
 				B77B08BA2D9F0FB50090D54C /* MockAuthRemoteDataSource.swift in Sources */,
 				B77B08B82D9F0E440090D54C /* MockNetworkStatusRepository.swift in Sources */,

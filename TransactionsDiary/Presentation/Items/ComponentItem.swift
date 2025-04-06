@@ -18,13 +18,3 @@ struct ComponentItem: Identifiable {
         onTap: {}
     )
 }
-
-struct ButtonItem {
-    let content: String
-    let isEnabled: Bool
-    
-    static let empty = ButtonItem(
-        content: "",
-        isEnabled: false
-    )
-}

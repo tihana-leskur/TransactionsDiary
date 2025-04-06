@@ -65,7 +65,7 @@ final class DefaultTransactionRepository: TransactionRepository {
             relationName: .image
         )
     }
-    
+
     func createTransactions(
         _ transactions: [TransactionDetails],
         for userId: UUID
@@ -150,7 +150,7 @@ final class DefaultTransactionRepository: TransactionRepository {
             .store(in: &cancellables)
         }
     }
-    
+
     func getTransactionDetails(id: UUID) -> Future<TransactionDetails, Error> {
         Future<TransactionDetails, Error> { [weak self] promise in
             guard let self = self else {
